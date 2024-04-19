@@ -15,6 +15,7 @@ datasource db {
 
 model Building {
   id          Int    @id @default(autoincrement())
+  name        String
   temperature Int    @default(20)
   rooms       Room[]
 }
