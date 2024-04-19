@@ -1,0 +1,19 @@
+{
+  "name": "room-backend",
+  "version": "1.0.0",
+  "description": "- This directory is fall all backend code. The backend shall consist of an API to expose the required functionality to the frontend services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.12.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.12.1"
+  }
+}
