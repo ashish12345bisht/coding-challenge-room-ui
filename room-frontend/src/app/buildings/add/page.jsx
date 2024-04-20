@@ -46,6 +46,7 @@ const AddBuilding = () => {
                 const response = await axios.post(`http://localhost:8000/building`, { name, temperature: Number(temperature) })
             }
             router.push("/buildings")
+            router.refresh()
         } catch (error) {
             console.error("catch error", error);
             let errArr = [];

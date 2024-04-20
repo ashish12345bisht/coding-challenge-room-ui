@@ -51,6 +51,7 @@ const AddRoom = ({ params }) => {
                 const response = await axios.post(`http://localhost:8000/room`, { occupant_name: name, temperature: Number(temperature), buildingId })
             }
             router.push(`/buildings/${buildingId}/rooms`)
+            router.refresh()
         } catch (error) {
             console.error("catch error", error);
             let errArr = [];
