@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 roomRouter.post('/', async (req, res) => {
     try {
         const { occupant_name, temperature, buildingId } = req.body;
-        const building = await prisma.room.findFirst({ where: { id: parseInt(buildingId) } });
+        const building = await prisma.building.findFirst({ where: { id: parseInt(buildingId) } });
         const room = await prisma.room.create({
             data: {
                 occupant_name,
@@ -69,7 +69,7 @@ roomRouter.get('/:id', async (req, res) => {
 roomRouter.put('/:id', async (req, res) => {
     try {
         const { occupant_name, temperature, buildingId } = req.body;
-        const building = await prisma.room.findFirst({ where: { id: parseInt(buildingId) } });
+        const building = await prisma.building.findFirst({ where: { id: parseInt(buildingId) } });
         const updatedRoom = await prisma.room.update({
             where: {
                 id: parseInt(req.params.id),

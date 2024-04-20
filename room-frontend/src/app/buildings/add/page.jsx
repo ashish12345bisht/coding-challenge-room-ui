@@ -19,7 +19,7 @@ const AddBuilding = () => {
 
     useEffect(() => {
         const prefill = async () => {
-            const { data: room } = await axios.get(`http://localhost:8000/building/${buildingId}`)
+            const { data: room } = await axios.get(`https://coding-challenge-room-ui.onrender.com/building/${buildingId}`)
             setTemperature(room?.temperature)
             setName(room?.name)
         }
@@ -41,9 +41,9 @@ const AddBuilding = () => {
                 temperature: temperature,
             });
             if (buildingId) {
-                const response = await axios.put(`http://localhost:8000/building/${buildingId}`, { name, temperature: Number(temperature), buildingId })
+                const response = await axios.put(`https://coding-challenge-room-ui.onrender.com/building/${buildingId}`, { name, temperature: Number(temperature), buildingId })
             } else {
-                const response = await axios.post(`http://localhost:8000/building`, { name, temperature: Number(temperature) })
+                const response = await axios.post(`https://coding-challenge-room-ui.onrender.com/building`, { name, temperature: Number(temperature) })
             }
             router.push("/buildings")
             router.refresh()
