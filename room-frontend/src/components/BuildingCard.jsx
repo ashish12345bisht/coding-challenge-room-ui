@@ -1,15 +1,20 @@
 "use client"
+import { generateConfirm } from '@/app/actions';
 import axios from 'axios';
 import { Pencil, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 const BuildingCard = ({ building, baseURL }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
-        let response = await axios.delete(`${baseURL}/building/${building.id}`);
-        router.refresh()
+        generateConfirm(async () => {
+            let response = await axios.delete(`${baseURL}/building/${building.id}`);
+            router.refresh()
+        })
     }
     return (
         <div className="w-[160px] h-[200px] text-center shadow-md rounded-md m-2 hover:scale-105 duration-300 transition-all bg-slate-700 p-4 flex flex-col justify-around items-center ">

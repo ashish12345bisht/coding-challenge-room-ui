@@ -1,15 +1,20 @@
 "use client"
+import { generateConfirm } from '@/app/actions';
 import axios from 'axios';
 import { CircleMinus, CirclePlus, Pencil, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 const RoomCard = ({ room, baseURL }) => {
     const router = useRouter();
 
     const handleDelete = async () => {
-        let response = await axios.delete(`${baseURL}/room/${room.id}`);
-        router.refresh()
+        generateConfirm(async () => {
+            let response = await axios.delete(`${baseURL}/room/${room.id}`);
+            router.refresh()
+        })
     }
 
     const updateTemp = async (temperature) => {
