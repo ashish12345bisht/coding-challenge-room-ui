@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorMessage from "@components/ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
