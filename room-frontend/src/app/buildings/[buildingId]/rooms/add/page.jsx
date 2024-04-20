@@ -7,7 +7,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import z from 'zod'
 
-const randomTemp = Math.floor(Math.random() * 31) + 10
+// Component purpose -
+// Be able to show each Room as a card with the properties, temperature values and heating/cooling status
+// Have a method for the user to add, remove and edit rooms in a building
+
+const randomTemp = Math.floor(Math.random() * 31) + 10 // Initially a room's temperature should be a random value between 10 °C and 40 °C.
 const AddRoom = ({ params }) => {
     const [temperature, setTemperature] = useState(randomTemp)
     const [name, setName] = useState("")

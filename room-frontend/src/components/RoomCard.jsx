@@ -28,6 +28,7 @@ const RoomCard = ({ room, baseURL }) => {
                 <span className="text-white font-medium">{room?.temperature || "NA"} &deg; C</span>
                 <CirclePlus onClick={() => updateTemp(parseInt(room?.temperature) + 1)} className='text-white cursor-pointer' />
             </div>
+            {/* Be able to show the updated cooling/heating statuses of the rooms based on the new temperature */}
             <div className='flex flex-col items-center text-white'>
                 <span>Cooling : {room?.cooling_status ? "On" : "Off"}</span>
                 <span>Heating : {room?.heating_status ? "On" : "Off"}</span>

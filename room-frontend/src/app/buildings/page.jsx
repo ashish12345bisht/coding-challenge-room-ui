@@ -3,6 +3,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+// Component purpose -
+// Have a card or header that shows the properties of the Building
 export default async function Buildings() {
     const { data: buildings } = await axios.get(`${process.env.API_URL}/building`);
 

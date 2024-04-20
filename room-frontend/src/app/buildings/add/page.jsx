@@ -6,9 +6,11 @@ import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import z from 'zod'
-
+// Component purpose  -
+// A building should have the ability to add additional Rooms
+// A building should have the ability to change the requested temperature
 const AddBuilding = () => {
-    const [temperature, setTemperature] = useState(20)
+    const [temperature, setTemperature] = useState(20) //The default requested temperature should be 20.0 °C
     const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
     const router = useRouter()
