@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const buildingRouter = require('./routes/building');
 const roomRouter = require('./routes/room');
 
 app.use(express.json());
+app.use(cors());
 
 // Define a route handler for the root path
 app.use('/building', buildingRouter);

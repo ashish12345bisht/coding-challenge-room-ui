@@ -8,14 +8,15 @@ const prisma = new PrismaClient();
 // Create a new room
 roomRouter.post('/', async (req, res) => {
     try {
-        const { occupant_name, temperature, heating_status, cooling_status, buildingId } = req.body;
+        const { occupant_name, temperature, buildingId } = req.body;
+        const building = await prisma.room.findFirst({ where: { id: parseInt(buildingId) } });
         const room = await prisma.room.create({
             data: {
                 occupant_name,
                 temperature,
-                heating_status,
-                cooling_status,
-                buildingId,
+                heating_status: temperature < building?.temperature ? true : false,
+                cooling_status: temperature > building?.temperature ? true : false,
+                buildingId: parseInt(buildingId),
             },
         });
         res.json(room);
@@ -28,7 +29,17 @@ roomRouter.post('/', async (req, res) => {
 // Retrieve all rooms
 roomRouter.get('/', async (req, res) => {
     try {
-        const rooms = await prisma.room.findMany();
+        const { buildingId } = req.query;
+        let rooms;
+        if (buildingId) {
+            rooms = await prisma.room.findMany({
+                where: {
+                    buildingId: parseInt(buildingId)
+                }
+            });
+        } else {
+            rooms = await prisma.room.findMany();
+        }
         res.json(rooms);
     } catch (error) {
         console.error('Error fetching rooms:', error);
@@ -57,7 +68,8 @@ roomRouter.get('/:id', async (req, res) => {
 // Update a room by ID
 roomRouter.put('/:id', async (req, res) => {
     try {
-        const { occupant_name, temperature, heating_status, cooling_status, buildingId } = req.body;
+        const { occupant_name, temperature, buildingId } = req.body;
+        const building = await prisma.room.findFirst({ where: { id: parseInt(buildingId) } });
         const updatedRoom = await prisma.room.update({
             where: {
                 id: parseInt(req.params.id),
@@ -65,9 +77,9 @@ roomRouter.put('/:id', async (req, res) => {
             data: {
                 occupant_name,
                 temperature,
-                heating_status,
-                cooling_status,
-                buildingId,
+                heating_status: temperature < building?.temperature ? true : false,
+                cooling_status: temperature > building?.temperature ? true : false,
+                buildingId: parseInt(buildingId),
             },
         });
         res.json(updatedRoom);

@@ -4,13 +4,15 @@
   "description": "- This directory is fall all backend code. The backend shall consist of an API to expose the required functionality to the frontend services",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.12.1",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
