@@ -1,4 +1,4 @@
-import RoomCard from '@/app/components/RoomCard';
+import RoomCard from '@/components/RoomCard';
 import axios from 'axios';
 import Link from 'next/link';
 import React from 'react'
