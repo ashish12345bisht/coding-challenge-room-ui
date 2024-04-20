@@ -1,11 +1,19 @@
 ## Coding Challenge Room UI
 
+clone the project and open the project in cmd
 ### The backend
 
-- The backend can be written in Java, Python or a backend Javascript framework such as NodeJS
-- All Source code for the backend shall be in the room-backend directory and ran as a standalone service
+- cd room-backend
+- .env > UPDATE Database URL (prisma)
+- npm install
+- npx prisma migrate dev --name name
+- npm start
+
+for frontend move out to the root directory
+- cd ../
 
 ### The frontend
 
-- A basic NextJS application framework has been provided for you in room-frontend
-- All Source code for the frontend shall be in the room-frontend directory and ran as a standalone service
+- room-frontend
+- npm install
+- npm run dev
