@@ -1,4 +1,4 @@
-import BuildingCard from "@/components/BuildingCard";
+import BuildingCard from "@/app/components/BuildingCard";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,10 +10,13 @@ export default async function Buildings() {
 
     return (
         <div className="min-h-screen">
-            <div className="flex justify-end px-10 py-4">
-                <Link href="/buildings/add">
-                    <button className="text-white font-medium bg-black px-2 py-1 rounded-md">Add Building</button>
-                </Link>
+            <div className="flex justify-end flex-wrap items-center px-10 py-4">
+                <div className="text-center w-full text-[30px] font-semibold">Buildings</div>
+                <div className="absolute bottom-[2%] right-2">
+                    <Link href="/buildings/add">
+                        <button className="text-white font-medium bg-black px-2 py-1 rounded-md">Add Building</button>
+                    </Link>
+                </div>
             </div>
             <div className="grid grid-cols-4">
                 {buildings?.map((building) => (
